@@ -1,0 +1,15 @@
+.cardFront {
+  background-image: url(../../../public/bg-card-front.png);
+  height: 250px;
+  width: 450px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.cardBack {
+  background-image: url("../../../public/bg-card-back.png");
+  height: 250px;
+  width: 450px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
