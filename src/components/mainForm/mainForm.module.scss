@@ -1,0 +1,61 @@
+$primary-red: hsl(0, 100%, 66%);
+$white: white;
+$light-grayish-violet: hsl(270, 3%, 87%);
+$dark-grayish-violet: hsl(279, 6%, 55%);
+$very-dark-violet: hsl(278, 68%, 11%);
+$gradient-start: hsl(249, 99%, 64%);
+$gradient-end: hsl(278, 94%, 30%);
+
+.formContainer {
+  display: grid;
+  margin-top: 6rem;
+  width: 24vw;
+  margin-left: 12rem;
+
+  label {
+    text-align: left;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    margin-top: 20px;
+    color: $very-dark-violet;
+    font-size: 12px;
+  }
+
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid $light-grayish-violet;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    &:focus {
+      //   padding: 0.6rem 1rem;
+      border: double 1px transparent;
+      border-radius: 6px;
+      background-image: linear-gradient(white, white),
+        linear-gradient(60deg, $gradient-start, $gradient-end);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      outline: none;
+    }
+  }
+
+  button {
+    margin-top: 2rem;
+    padding: 0.8rem 0;
+    border: none;
+    background-color: $very-dark-violet;
+    color: $white;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $gradient-end;
+      transition: ease-in-out 0.2s;
+    }
+  }
+}
