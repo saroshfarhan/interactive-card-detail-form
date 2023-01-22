@@ -78,6 +78,7 @@ function App() {
           cvc: "000",
         });
     }
+
     if (field === "cardNumber" && changeData === "") {
       setCardData({
         ...cardData,
