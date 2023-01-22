@@ -2,20 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import styl from "./mainForm.module.scss";
 
-function MainForm({ handleClick }) {
+function MainForm({ handleClick, dataChange }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  // const intialValues = {
-  //   cardHolderName: "Jane Appleseed",
-  //   cardNumber: "0000 0000 0000 0000",
-  //   mm: "00",
-  //   yy: "00",
-  //   cvc: "000",
-  // };
 
   return (
     <form onSubmit={handleSubmit(handleClick)} className={styl.formContainer}>
@@ -24,10 +16,14 @@ function MainForm({ handleClick }) {
         placeholder="e.g. Jane Appleseed"
         {...register("cardHolderName", { required: true })}
         className={`${errors.cardHolderName ? styl.error : ""}`}
+        onChange={(e) => {
+          dataChange(e.target.value, "cardHolderName");
+        }}
       />
       {errors.cardHolderName && <p>Can't be blank</p>}
 
       <label htmlFor="cardNumber">Card Number</label>
+
       <input
         className={`${errors.cardNumber ? styl.error : ""}`}
         placeholder="e.g. 0000 0000 0000 0000"
@@ -38,6 +34,9 @@ function MainForm({ handleClick }) {
           },
           pattern: /^[0-9]+$/,
         })}
+        onChange={(e) => {
+          dataChange(e.target.value, "cardNumber");
+        }}
       />
       {errors.cardNumber && <p>Can't be blank</p>}
       {errors.cardNumber && errors.cardNumber.type === "length" && (
@@ -61,6 +60,9 @@ function MainForm({ handleClick }) {
                 pattern: /^[0-9]+$/,
               })}
               className={`${errors.expMonth ? styl.error : ""}`}
+              onChange={(e) => {
+                dataChange(e.target.value, "expMonth");
+              }}
             />
             <input
               placeholder="YY"
@@ -72,6 +74,9 @@ function MainForm({ handleClick }) {
                 pattern: /^[0-9]+$/,
               })}
               className={`${errors.expYear ? styl.error : ""}`}
+              onChange={(e) => {
+                dataChange(e.target.value, "expYear");
+              }}
             />
           </div>
           {(errors.expMonth && <p>Can't be blank</p>) ||
@@ -81,7 +86,7 @@ function MainForm({ handleClick }) {
         <div>
           <label htmlFor="cvc">cvc</label>
           <input
-            className={`${errors.cardHolderName ? styl.error : ""}`}
+            className={`${errors.cvc ? styl.error : ""}`}
             placeholder="e.g. 123"
             {...register("cvc", {
               required: true,
@@ -90,6 +95,9 @@ function MainForm({ handleClick }) {
               },
               pattern: /^[0-9]+$/,
             })}
+            onChange={(e) => {
+              dataChange(e.target.value, "cvc");
+            }}
           />
           {errors.cvc && <p>Can't be blank</p>}
           {errors.cvc && errors.cvc.type === "length" && (
