@@ -15,6 +15,17 @@ function App() {
     cvc: "000",
   });
 
+  const onContinue = () => {
+    setCardData({
+      cardHolderName: "Jane Appleseed",
+      cardNumber: "0000 0000 0000 0000",
+      mm: "00",
+      yy: "00",
+      cvc: "000",
+    });
+    setCompleted((prevState) => !prevState);
+  };
+
   const onSubmit = (data) => {
     setCardData({
       cardHolderName: data.cardHolderName,
@@ -81,7 +92,7 @@ function App() {
       {!completed ? (
         <MainForm handleClick={onSubmit} dataChange={dataChange} />
       ) : (
-        <Completed />
+        <Completed onContinue={onContinue} />
       )}
     </main>
   );
