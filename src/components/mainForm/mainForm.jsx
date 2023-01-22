@@ -62,7 +62,6 @@ function MainForm({ handleClick }) {
               })}
               className={`${errors.expMonth ? styl.error : ""}`}
             />
-
             <input
               placeholder="YY"
               {...register("expYear", {
