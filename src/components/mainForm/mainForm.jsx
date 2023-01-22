@@ -45,7 +45,8 @@ function MainForm({ handleClick, dataChange }) {
           validate: {
             length: (value) => value.length === 19,
           },
-          pattern: /^[0-9]+$/,
+          pattern: /^[\d\s]+$/,
+          //pattern: /^[0-9]+$/,
         })}
         onChange={(e) => {
           const { value } = e.target;
@@ -73,6 +74,7 @@ function MainForm({ handleClick, dataChange }) {
                 required: true,
                 validate: {
                   length: (value) => value.length === 2,
+                  limit: (value) => value <= 12,
                 },
                 pattern: /^[0-9]+$/,
               })}
@@ -96,8 +98,15 @@ function MainForm({ handleClick, dataChange }) {
               }}
             />
           </div>
-          {(errors.expMonth && <p>Can't be blank</p>) ||
-            (errors.expYear && <p>Can't be blank</p>)}
+          {(errors.expMonth && errors.expMonth.type === "required" && (
+            <p>Can't be blank</p>
+          )) ||
+            (errors.expYear && errors.expYear.type === "required" && (
+              <p>Can't be blank</p>
+            ))}
+          {errors.expMonth && errors.expMonth.type === "limit" && (
+            <p>Value must be less that 12</p>
+          )}
         </div>
 
         <div>
@@ -116,7 +125,9 @@ function MainForm({ handleClick, dataChange }) {
               dataChange(e.target.value, "cvc");
             }}
           />
-          {errors.cvc && <p>Can't be blank</p>}
+          {errors.cvc && errors.cvc.type === "required" && (
+            <p>Can't be blank</p>
+          )}
           {errors.cvc && errors.cvc.type === "length" && (
             <p>CVC must be 3 digits</p>
           )}
