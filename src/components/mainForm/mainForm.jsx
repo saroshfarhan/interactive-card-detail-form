@@ -2,6 +2,14 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import styl from "./mainForm.module.scss";
 
+const normalizeCardNumber = (value) => {
+  return value
+    .replace(/\s/g, "")
+    .match(/.{1,4}/g)
+    ?.join(" ")
+    .substr(0, 19);
+};
+
 function MainForm({ handleClick, dataChange }) {
   const {
     register,
@@ -26,19 +34,26 @@ function MainForm({ handleClick, dataChange }) {
 
       <input
         className={`${errors.cardNumber ? styl.error : ""}`}
+        type="tel"
+        inputMode="numeric"
+        ref={register}
         placeholder="e.g. 0000 0000 0000 0000"
         {...register("cardNumber", {
           required: true,
           validate: {
-            length: (value) => value.length === 16,
+            length: (value) => value.length === 19,
           },
           pattern: /^[0-9]+$/,
         })}
         onChange={(e) => {
+          const { value } = e.target;
+          e.target.value = normalizeCardNumber(value);
           dataChange(e.target.value, "cardNumber");
         }}
       />
-      {errors.cardNumber && <p>Can't be blank</p>}
+      {errors.cardNumber && errors.cardNumber.type === "required" && (
+        <p>Can't be blank</p>
+      )}
       {errors.cardNumber && errors.cardNumber.type === "length" && (
         <p>Card number must be 16 digit</p>
       )}
