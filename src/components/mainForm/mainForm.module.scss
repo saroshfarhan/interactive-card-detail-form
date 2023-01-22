@@ -6,10 +6,16 @@ $very-dark-violet: hsl(278, 68%, 11%);
 $gradient-start: hsl(249, 99%, 64%);
 $gradient-end: hsl(278, 94%, 30%);
 
+@mixin mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
 .formContainer {
   display: grid;
-  margin-top: 6rem;
-  width: 24vw;
+  margin-top: 14rem;
+  width: 26vw;
   margin-left: 12rem;
 
   label {
@@ -43,6 +49,22 @@ $gradient-end: hsl(278, 94%, 30%);
       background-clip: padding-box, border-box;
       outline: none;
     }
+
+    &::placeholder {
+      color: $dark-grayish-violet;
+      opacity: 0.4;
+    }
+  }
+
+  p {
+    color: $primary-red;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  p::before {
+    display: inline;
+    content: "";
   }
 
   button {
@@ -56,6 +78,24 @@ $gradient-end: hsl(278, 94%, 30%);
     &:hover {
       background-color: $gradient-end;
       transition: ease-in-out 0.2s;
+    }
+  }
+
+  .error {
+    border: 1px solid $primary-red;
+  }
+
+  .cvcDateInfo {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .expDate {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      width: 4.5rem;
     }
   }
 }

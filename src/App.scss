@@ -1,3 +1,9 @@
+@mixin mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
 $primary-red: hsl(0, 100%, 66%);
 $white: white;
 $light-grayish-violet: hsl(270, 3%, 87%);

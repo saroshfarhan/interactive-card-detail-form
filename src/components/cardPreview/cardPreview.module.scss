@@ -1,3 +1,9 @@
+@mixin mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
 .cardFront {
   background-image: url("../../../public/bg-card-front.png");
   height: 250px;
@@ -11,12 +17,12 @@
   .cardDetails {
     padding: 2rem;
 
-    .name {
-      font-size: 2.1rem;
+    .cardNumber {
+      font-size: 1.9rem;
       font-weight: 400;
       letter-spacing: 0.042rem;
       margin-top: 3.2rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
     .cardInfo {
@@ -25,7 +31,8 @@
       align-items: center;
 
       p {
-        font-weight: 200;
+        font-weight: 100;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 2.5px;
       }
@@ -41,7 +48,7 @@
   background-repeat: no-repeat;
   object-fit: cover;
   position: absolute;
-  top: 54%;
+  top: 52%;
   left: 18%;
   box-shadow: 8px 8px 60px rgb(148, 148, 148);
 
