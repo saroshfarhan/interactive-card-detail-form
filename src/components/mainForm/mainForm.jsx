@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import styl from "./mainForm.module.scss";
 
 const normalizeCardNumber = (value) => {
-  return value
-    .replace(/\s/g, "")
-    .match(/.{1,4}/g)
-    ?.join(" ")
-    .substr(0, 19);
+  return (
+    value
+      .replace(/\s/g, "")
+      .match(/.{1,4}/g)
+      ?.join(" ")
+      .substr(0, 19) || ""
+  );
 };
 
 function MainForm({ handleClick, dataChange }) {

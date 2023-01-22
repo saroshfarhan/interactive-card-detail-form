@@ -78,6 +78,12 @@ function App() {
           cvc: "000",
         });
     }
+    if (field === "cardNumber" && changeData === "") {
+      setCardData({
+        ...cardData,
+        cardNumber: "0000 0000 0000 0000",
+      });
+    }
   };
 
   return (
