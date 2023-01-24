@@ -109,6 +109,12 @@ function MainForm({ handleClick, dataChange }) {
           {errors.expMonth && errors.expMonth.type === "limit" && (
             <p>Value must be less that 12</p>
           )}
+          {(errors.expMonth && errors.expMonth.type === "length" && (
+            <p>Two digits required</p>
+          )) ||
+            (errors.expYear && errors.expYear.type === "length" && (
+              <p>Two digits required</p>
+            ))}
         </div>
 
         <div>
