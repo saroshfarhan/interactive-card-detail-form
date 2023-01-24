@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
 
 @mixin mobile {
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
@@ -12,4 +12,9 @@ body {
   background-repeat: no-repeat;
   object-fit: fill;
   font-family: "Space Grotesk", sans-serif;
+
+  @include mobile() {
+    background-image: url("../public/bg-main-mobile.png");
+    background-repeat: repeat-x;
+  }
 }

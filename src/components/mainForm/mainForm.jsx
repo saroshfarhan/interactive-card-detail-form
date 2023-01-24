@@ -70,6 +70,7 @@ function MainForm({ handleClick, dataChange }) {
           <div className={styl.expDate}>
             <input
               placeholder="MM"
+              type="tel"
               {...register("expMonth", {
                 required: true,
                 validate: {
@@ -85,6 +86,7 @@ function MainForm({ handleClick, dataChange }) {
             />
             <input
               placeholder="YY"
+              type="tel"
               {...register("expYear", {
                 required: true,
                 validate: {
@@ -114,6 +116,7 @@ function MainForm({ handleClick, dataChange }) {
           <input
             className={`${errors.cvc ? styl.error : ""}`}
             placeholder="e.g. 123"
+            type="tel"
             {...register("cvc", {
               required: true,
               validate: {

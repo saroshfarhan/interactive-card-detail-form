@@ -1,5 +1,5 @@
 @mixin mobile {
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
@@ -14,28 +14,54 @@
   left: 10%;
   top: 16%;
   position: absolute;
-  .cardDetails {
-    padding: 2rem;
 
+  @include mobile() {
+    height: 186px;
+    width: 336px;
+    left: 4%;
+    background-size: contain;
+
+    .cardDetails {
+      padding: 1rem;
+
+      img {
+        width: 20%;
+      }
+    }
+  }
+}
+
+.cardDetails {
+  padding: 2rem;
+
+  .cardNumber {
+    font-size: 1.9rem;
+    font-weight: 400;
+    letter-spacing: 0.09rem;
+    margin-top: 3.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  @include mobile() {
     .cardNumber {
-      font-size: 1.9rem;
+      font-size: 1.4rem;
       font-weight: 400;
       letter-spacing: 0.09rem;
-      margin-top: 3.2rem;
-      margin-bottom: 0.6rem;
+      margin-top: 2.4rem;
+      margin-bottom: 0.5rem;
     }
+  }
 
-    .cardInfo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .cardInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      p {
-        font-weight: 100;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-      }
+    p {
+      font-weight: 100;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
     }
   }
 }
@@ -57,5 +83,25 @@
     padding-right: 3.4rem;
     padding-top: 5.9rem;
     color: white;
+  }
+}
+
+@include mobile() {
+  .cardBack {
+    height: 186px;
+    width: 336px;
+    border-radius: 10px;
+    background-size: contain;
+    top: 3%;
+    left: 8%;
+    z-index: -1;
+    box-shadow: none;
+
+    p {
+      text-align: end;
+      padding-right: 2.8rem;
+      padding-top: 4rem;
+      color: white;
+    }
   }
 }

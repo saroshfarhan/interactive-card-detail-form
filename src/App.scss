@@ -1,5 +1,5 @@
 @mixin mobile {
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
@@ -18,4 +18,12 @@ $gradient-end: hsl(278, 94%, 30%);
   gap: 2rem;
   align-items: center;
   justify-content: space-around;
+
+  @include mobile() {
+    display: grid;
+    padding: 2rem 1rem;
+    justify-content: center;
+    place-content: center;
+    width: fit-content;
+  }
 }

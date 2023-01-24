@@ -7,7 +7,7 @@ $gradient-start: hsl(249, 99%, 64%);
 $gradient-end: hsl(278, 94%, 30%);
 
 @mixin mobile {
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
@@ -97,5 +97,12 @@ $gradient-end: hsl(278, 94%, 30%);
     input {
       width: 4.5rem;
     }
+  }
+
+  @include mobile() {
+    margin-top: 19rem;
+    margin-left: 0;
+    place-content: center;
+    width: fit-content;
   }
 }

@@ -7,7 +7,7 @@ $gradient-start: hsl(249, 99%, 64%);
 $gradient-end: hsl(278, 94%, 30%);
 
 @mixin mobile {
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
@@ -47,5 +47,11 @@ $gradient-end: hsl(278, 94%, 30%);
       background-color: $gradient-end;
       transition: ease-in-out 0.2s;
     }
+  }
+
+  @include mobile() {
+    width: fit-content;
+    margin-top: 20rem;
+    margin-left: 0.8rem;
   }
 }
